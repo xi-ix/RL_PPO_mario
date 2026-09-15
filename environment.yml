@@ -1,0 +1,12 @@
+name: mario-ppo
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip<25
+  - pip:
+      - gym==0.23.1
+      - gym-super-mario-bros==7.4.0
+      - nes-py==8.2.1
+      - numpy==1.26.4
+

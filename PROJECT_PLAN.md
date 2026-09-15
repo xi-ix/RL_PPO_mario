@@ -49,7 +49,7 @@ info                    角色位置、生命、关卡状态等信息
 2. 理解卷积神经网络如何从连续游戏画面判断运动状态。
 3. 从公式和代码两个层面掌握 Actor-Critic、GAE 和 PPO。
 4. 建立可观察、可测试、可复现的训练流程。
-5. 训练模型在 `SuperMarioBros-1-1-v0` 中稳定向右前进并越过基础障碍。
+5. 训练模型在 `SuperMarioBros-1-1-v3` 中稳定向右前进并越过基础障碍。
 
 首期不要求稳定通关。通关作为进阶目标，避免把环境调试、算法实现和长时间调参混在一起。
 
@@ -90,7 +90,7 @@ info                    角色位置、生命、关卡状态等信息
 
 ### 游戏环境
 
-- 默认关卡：`SuperMarioBros-1-1-v0`
+- 默认关卡：`SuperMarioBros-1-1-v3`
 - 能用固定随机种子重置环境
 - 能以人工键盘、固定动作或随机动作控制角色
 - 能读取当前画面和 `info` 中的关键字段
@@ -135,7 +135,7 @@ PPO_RL/
 ├── PROJECT_PLAN.md
 ├── requirements.txt
 ├── src/
-│   ├── game.py             # 模拟器创建、reset/step 兼容处理
+│   ├── game.py             # 模拟器创建、reset/step 兼容处理（似乎没兼容问题）
 │   ├── actions.py          # 简化动作到 NES 按键的映射
 │   ├── preprocessing.py    # 灰度、缩放、帧跳过、帧堆叠
 │   ├── model.py            # CNN Actor-Critic
@@ -167,7 +167,7 @@ PPO_RL/
 
 - 创建 Python 3.10 虚拟环境。
 - 安装并锁定依赖版本。
-- 启动 `SuperMarioBros-1-1-v0`。
+- 启动 `SuperMarioBros-1-1-v3`。
 - 连续执行随机动作 1,000 步。
 - 打印 observation 的形状、数据类型、奖励、结束标记和 `info` 字段。
 - 验证窗口能够正常显示并关闭。
@@ -178,7 +178,7 @@ PPO_RL/
 - 角色死亡后能够自动开始新回合。
 - 能明确记录当前依赖组合和 Mac 架构信息。
 
-交付物：`requirements.txt`、`src/game.py`、`scripts/smoke_test.py`。
+交付物：`requirements.txt`、`scripts/smoke_test.py`。
 
 ### 阶段 1：动作控制与人工试玩
 
@@ -322,7 +322,7 @@ total_loss = policy_loss + value_coef * value_loss - entropy_coef * entropy
 
 ```yaml
 environment:
-  level: SuperMarioBros-1-1-v0
+  level: SuperMarioBros-1-1-v3
   frame_skip: 4
   frame_stack: 4
   image_size: [84, 84]
